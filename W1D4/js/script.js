@@ -27,3 +27,7 @@ fetch('https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem')
     console.error('Si è verificato un errore:', error);
   });
 
+  //example of "new function synthax"
+  //let sum = new Function('a', 'b', 'return a + b');
+  // alert( sum(1, 2) ); // 3
+

@@ -47,3 +47,11 @@ filterBooks(inputSearch.value).then(books =>{
     books.filter((book)=> createBookCard(book))
 })
 })
+
+inputSearch.addEventListener("change", ()=>{
+    if(inputSearch.value === ""){
+        getBooks().then(books => {
+            books.map((book)=> createBookCard(book))
+        });
+    }
+})

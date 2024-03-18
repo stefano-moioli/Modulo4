@@ -8,8 +8,9 @@ async function getBooks() {
     }
 }
 
-const bookContainer = document.getElementById("bookContainer")
+const bookContainer = document.getElementById("bookContainer");
 const inputSearch = document.getElementById("inputsSearch");
+const buttonSearch = document.getElementById("buttonSearch");
 
 function createBookCard(book){
     const cardContainer = document.createElement("div");
@@ -30,8 +31,19 @@ getBooks().then(books => {
     books.map((book)=> createBookCard(book))
 });
 
-function filterBooks(searchQuery, books){
+async function filterBooks(searchQuery){
+const books = await getBooks()
 const filter = books.filter((book)=>{
     const bookTitle = book.title.toLowerCase()
+    return bookTitle.includes(searchQuery.toLowerCase())
 })
+return filter
 }
+
+buttonSearch.addEventListener("click", (event)=>{
+event.preventDefault()
+bookContainer.innerHTML = ""
+filterBooks(inputSearch.value).then(books =>{
+    books.filter((book)=> createBookCard(book))
+})
+})

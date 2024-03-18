@@ -9,6 +9,7 @@ async function getBooks() {
 }
 
 const bookContainer = document.getElementById("bookContainer")
+const inputSearch = document.getElementById("inputsSearch");
 
 function createBookCard(book){
     const cardContainer = document.createElement("div");
@@ -28,3 +29,9 @@ function createBookCard(book){
 getBooks().then(books => {
     books.map((book)=> createBookCard(book))
 });
+
+function filterBooks(searchQuery, books){
+const filter = books.filter((book)=>{
+    const bookTitle = book.title.toLowerCase()
+})
+}
